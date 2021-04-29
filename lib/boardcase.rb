@@ -15,7 +15,6 @@ class BoardCase
       @state = new_state
     when true
       puts 'This case is already occupied!'
-      raise IndexError
     end
   end
 end

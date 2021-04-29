@@ -29,9 +29,19 @@ class Game
   end
 
   def ask_move
+    empty_cases = @current_game.state.reject(&:is_full)
+    e_c_names = empty_cases.map(&:name)
     puts "What's your next move ?"
-    move = gets.chomp.upcase
-    @current_game.set_case(move, @turn.sign)
+    move = ''
+    while !e_c_names.include?(move)
+      begin
+        move = gets.chomp.upcase
+        @current_game.set_case(move, @turn.sign)
+      rescue TypeError
+        puts 'Please enter a coordinate like "a1", "B2", or "c3"'
+        redo
+      end
+    end
   end
 
   def grid
