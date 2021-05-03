@@ -44,11 +44,11 @@ class Application
   end
 
   def replay
-    ans = gets.chomp
-    if ans == "Y".downcase
+    ans = gets.chomp.upcase
+    if ans == "Y"
       @game = Game.new(@first_name1, @first_name2)
       play
-    elsif ans == "N".downcase
+    elsif ans == "N"
       puts 'Bye!'
     end
   end
